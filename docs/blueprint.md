@@ -1,4 +1,4 @@
-# **App Name**: DevOps Dojo
+# **App Name**: DevopsBuddy
 
 ## Core Features:
 

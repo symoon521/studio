@@ -1,9 +1,15 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/logo';
+import { AlertTriangle } from 'lucide-react';
+import { loginUser } from '@/lib/auth';
+import { useToast } from '@/hooks/use-toast';
 
 function GoogleIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
@@ -18,6 +24,49 @@ function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export default function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const { toast } = useToast();
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError('');
+
+    try {
+      const result = loginUser(email, password);
+
+      if (result.success) {
+        toast({
+          title: "로그인 성공!",
+          description: "DevopsBuddy에 오신 것을 환영합니다.",
+        });
+        // 잠시 후 대시보드로 이동
+        setTimeout(() => {
+          window.location.href = '/dashboard';
+        }, 1000);
+      } else {
+        setError(result.message);
+        toast({
+          title: "로그인 실패",
+          description: result.message,
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      setError('로그인 중 오류가 발생했습니다.');
+      toast({
+        title: "오류",
+        description: "로그인 중 오류가 발생했습니다.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-background px-4">
       <Card className="mx-auto w-full max-w-sm">
@@ -25,14 +74,28 @@ export default function LoginPage() {
             <div className="mb-4 flex justify-center">
                 <Logo className="h-12 w-12 text-primary" />
             </div>
-          <CardTitle className="text-2xl font-bold tracking-tight">데브옵스 도조에 오신 것을 환영합니다</CardTitle>
+          <CardTitle className="text-2xl font-bold tracking-tight">DevopsBuddy에 오신 것을 환영합니다</CardTitle>
           <CardDescription>계정에 액세스하려면 정보를 입력하세요</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid gap-4">
+          <form onSubmit={handleLogin} className="grid gap-4">
+            {error && (
+              <div className="flex items-center gap-2 text-sm text-destructive bg-destructive/10 p-3 rounded-md">
+                <AlertTriangle className="h-4 w-4" />
+                {error}
+              </div>
+            )}
+            
             <div className="grid gap-2">
               <Label htmlFor="email">이메일</Label>
-              <Input id="email" type="email" placeholder="m@example.com" required />
+              <Input 
+                id="email" 
+                type="email" 
+                placeholder="m@example.com" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required 
+              />
             </div>
             <div className="grid gap-2">
               <div className="flex items-center">
@@ -41,10 +104,16 @@ export default function LoginPage() {
                   비밀번호를 잊으셨나요?
                 </Link>
               </div>
-              <Input id="password" type="password" required />
+              <Input 
+                id="password" 
+                type="password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required 
+              />
             </div>
-            <Button type="submit" className="w-full" asChild>
-                <Link href="/dashboard">로그인</Link>
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? '로그인 중...' : '로그인'}
             </Button>
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
@@ -55,10 +124,10 @@ export default function LoginPage() {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-2">
-                <Button variant="outline"><GithubIcon className="mr-2 h-4 w-4" /> 깃허브</Button>
-                <Button variant="outline"><GoogleIcon className="mr-2 h-4 w-4" /> 구글</Button>
+                <Button type="button" variant="outline"><GithubIcon className="mr-2 h-4 w-4" /> 깃허브</Button>
+                <Button type="button" variant="outline"><GoogleIcon className="mr-2 h-4 w-4" /> 구글</Button>
             </div>
-          </div>
+          </form>
           <div className="mt-4 text-center text-sm">
             계정이 없으신가요?{' '}
             <Link href="/signup" className="underline" prefetch={false}>

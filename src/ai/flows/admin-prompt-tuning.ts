@@ -31,7 +31,7 @@ const adjustAiPromptFlow = ai.defineFlow(
   {
     name: 'adjustAiPromptFlow',
     inputSchema: AdjustAiPromptInputSchema,
-    outputSchema: AdjustAiAIPromptOutputSchema,
+    outputSchema: AdjustAiPromptOutputSchema,
   },
   async input => {
     // 실제 애플리케이션에서는 데이터베이스나 구성 파일을 업데이트합니다.

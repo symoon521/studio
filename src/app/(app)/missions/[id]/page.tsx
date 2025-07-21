@@ -8,8 +8,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export default function MissionDetailPage({ params }: { params: { id: string } }) {
-  const mission = missions.find(m => m.id === params.id);
+export default async function MissionDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const mission = missions.find(m => m.id === id);
 
   if (!mission) {
     notFound();
@@ -44,7 +45,7 @@ export default function MissionDetailPage({ params }: { params: { id: string } }
         
         <div>
             <Button size="lg" asChild>
-                <Link href={`/missions/${mission.id}/lab`}>
+                <Link href={`/missions/${id}/lab`}>
                     <Rocket className="mr-2 h-5 w-5" /> 랩 환경 시작
                 </Link>
             </Button>
@@ -85,7 +86,7 @@ export default function MissionDetailPage({ params }: { params: { id: string } }
             </CardContent>
             <CardFooter>
                 <Button className="w-full" asChild>
-                    <Link href={`/missions/${mission.id}/feedback`}>
+                    <Link href={`/missions/${id}/feedback`}>
                         <Zap className="mr-2 h-4 w-4" /> 평가 제출
                     </Link>
                 </Button>

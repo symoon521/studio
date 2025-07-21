@@ -14,7 +14,7 @@ function MissionCard({ mission }: { mission: (typeof missions)[0] }) {
       <CardHeader>
         <div className="mb-4 h-40 w-full overflow-hidden rounded-md">
             <Image 
-                src={`https://placehold.co/400x200.png`}
+                src={`https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=400&h=200&fit=crop&crop=center`}
                 alt={mission.title}
                 width={400}
                 height={200}

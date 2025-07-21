@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: '데브옵스 도조',
+  title: 'DevopsBuddy',
   description: '개발자와 엔지니어를 위한 궁극의 데브옵스 시뮬레이션 학습 플랫폼입니다.',
 };
 

@@ -25,7 +25,7 @@ export const missions: Mission[] = [
     estimatedTime: '2시간',
     difficulty: '중급',
     techStack: ['Kubernetes', 'AWS EKS', 'Docker', 'Node.js'],
-    grafanaUrl: 'https://placehold.co/600x400',
+    grafanaUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&crop=center',
   },
   {
     id: '2',
