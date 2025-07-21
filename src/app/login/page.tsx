@@ -25,44 +25,44 @@ export default function LoginPage() {
             <div className="mb-4 flex justify-center">
                 <Logo className="h-12 w-12 text-primary" />
             </div>
-          <CardTitle className="text-2xl font-bold tracking-tight">Welcome to DevOps Dojo</CardTitle>
-          <CardDescription>Enter your credentials to access your account</CardDescription>
+          <CardTitle className="text-2xl font-bold tracking-tight">데브옵스 도조에 오신 것을 환영합니다</CardTitle>
+          <CardDescription>계정에 액세스하려면 정보를 입력하세요</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">이메일</Label>
               <Input id="email" type="email" placeholder="m@example.com" required />
             </div>
             <div className="grid gap-2">
               <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">비밀번호</Label>
                 <Link href="#" className="ml-auto inline-block text-sm underline" prefetch={false}>
-                  Forgot your password?
+                  비밀번호를 잊으셨나요?
                 </Link>
               </div>
               <Input id="password" type="password" required />
             </div>
             <Button type="submit" className="w-full" asChild>
-                <Link href="/dashboard">Login</Link>
+                <Link href="/dashboard">로그인</Link>
             </Button>
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <span className="w-full border-t" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-card px-2 text-muted-foreground">Or continue with</span>
+                <span className="bg-card px-2 text-muted-foreground">또는 다음으로 계속하기</span>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-2">
-                <Button variant="outline"><GithubIcon className="mr-2 h-4 w-4" /> GitHub</Button>
-                <Button variant="outline"><GoogleIcon className="mr-2 h-4 w-4" /> Google</Button>
+                <Button variant="outline"><GithubIcon className="mr-2 h-4 w-4" /> 깃허브</Button>
+                <Button variant="outline"><GoogleIcon className="mr-2 h-4 w-4" /> 구글</Button>
             </div>
           </div>
           <div className="mt-4 text-center text-sm">
-            Don&apos;t have an account?{' '}
+            계정이 없으신가요?{' '}
             <Link href="/signup" className="underline" prefetch={false}>
-              Sign up
+              가입하기
             </Link>
           </div>
         </CardContent>

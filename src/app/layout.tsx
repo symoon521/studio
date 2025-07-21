@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'DevOps Dojo',
-  description: 'The ultimate DevOps simulation learning platform for developers and engineers.',
+  title: '데브옵스 도조',
+  description: '개발자와 엔지니어를 위한 궁극의 데브옵스 시뮬레이션 학습 플랫폼입니다.',
 };
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="ko" className="dark">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

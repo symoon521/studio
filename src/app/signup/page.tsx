@@ -14,44 +14,44 @@ export default function SignupPage() {
           <div className="mb-4 flex justify-center">
             <Logo className="h-12 w-12 text-primary" />
           </div>
-          <CardTitle className="text-2xl font-bold tracking-tight">Create an Account</CardTitle>
-          <CardDescription>Enter your information to get started with DevOps Dojo</CardDescription>
+          <CardTitle className="text-2xl font-bold tracking-tight">계정 생성</CardTitle>
+          <CardDescription>데브옵스 도조를 시작하려면 정보를 입력하세요</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="full-name">Full Name</Label>
-              <Input id="full-name" placeholder="John Doe" required />
+              <Label htmlFor="full-name">이름</Label>
+              <Input id="full-name" placeholder="홍길동" required />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">이메일</Label>
               <Input id="email" type="email" placeholder="m@example.com" required />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">비밀번호</Label>
               <Input id="password" type="password" required />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="role">Role</Label>
+              <Label htmlFor="role">역할</Label>
               <Select>
-                <SelectTrigger id="role" aria-label="Select role">
-                  <SelectValue placeholder="Select your role" />
+                <SelectTrigger id="role" aria-label="역할 선택">
+                  <SelectValue placeholder="역할을 선택하세요" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="individual">Individual</SelectItem>
-                  <SelectItem value="team">Team</SelectItem>
-                  <SelectItem value="company">Company</SelectItem>
+                  <SelectItem value="individual">개인</SelectItem>
+                  <SelectItem value="team">팀</SelectItem>
+                  <SelectItem value="company">회사</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <Button type="submit" className="w-full" asChild>
-                <Link href="/dashboard">Create Account</Link>
+                <Link href="/dashboard">계정 생성</Link>
             </Button>
           </div>
           <div className="mt-4 text-center text-sm">
-            Already have an account?{' '}
+            이미 계정이 있으신가요?{' '}
             <Link href="/login" className="underline" prefetch={false}>
-              Log in
+              로그인
             </Link>
           </div>
         </CardContent>

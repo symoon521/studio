@@ -23,7 +23,7 @@ function MissionCard({ mission }: { mission: (typeof missions)[0] }) {
             />
         </div>
         <CardTitle>{mission.title}</CardTitle>
-        <Badge variant={mission.difficulty === 'Beginner' ? 'default' : mission.difficulty === 'Intermediate' ? 'secondary' : 'outline'} className="w-fit">{mission.difficulty}</Badge>
+        <Badge variant={mission.difficulty === '초급' ? 'default' : mission.difficulty === '중급' ? 'secondary' : 'outline'} className="w-fit">{mission.difficulty}</Badge>
         <CardDescription className="pt-2 line-clamp-2">{mission.description}</CardDescription>
       </CardHeader>
       <CardContent className="flex-grow">
@@ -37,7 +37,7 @@ function MissionCard({ mission }: { mission: (typeof missions)[0] }) {
           <span>{mission.estimatedTime}</span>
         </div>
         <Button asChild>
-          <Link href={`/missions/${mission.id}`}>Start Mission</Link>
+          <Link href={`/missions/${mission.id}`}>미션 시작</Link>
         </Button>
       </CardFooter>
     </Card>
@@ -50,28 +50,28 @@ export default function MissionsPage() {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h1 className="text-3xl font-bold">Missions Catalog</h1>
-        <p className="text-muted-foreground">Choose your next challenge and level up your DevOps skills.</p>
+        <h1 className="text-3xl font-bold">미션 카탈로그</h1>
+        <p className="text-muted-foreground">다음 도전을 선택하고 데브옵스 기술을 레벨업하세요.</p>
       </div>
       <div className="flex flex-col md:flex-row gap-4">
         <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-            <Input placeholder="Search missions..." className="pl-10" />
+            <Input placeholder="미션 검색..." className="pl-10" />
         </div>
         <div className="flex gap-4">
             <Select>
                 <SelectTrigger className="w-full md:w-[180px]">
-                    <SelectValue placeholder="Filter by difficulty" />
+                    <SelectValue placeholder="난이도별 필터" />
                 </SelectTrigger>
                 <SelectContent>
-                    <SelectItem value="beginner">Beginner</SelectItem>
-                    <SelectItem value="intermediate">Intermediate</SelectItem>
-                    <SelectItem value="advanced">Advanced</SelectItem>
+                    <SelectItem value="beginner">초급</SelectItem>
+                    <SelectItem value="intermediate">중급</SelectItem>
+                    <SelectItem value="advanced">고급</SelectItem>
                 </SelectContent>
             </Select>
             <Select>
                 <SelectTrigger className="w-full md:w-[180px]">
-                    <SelectValue placeholder="Filter by tech stack" />
+                    <SelectValue placeholder="기술 스택별 필터" />
                 </SelectTrigger>
                 <SelectContent>
                     {techStacks.map(tech => (

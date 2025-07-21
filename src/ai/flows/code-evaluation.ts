@@ -12,15 +12,15 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const CodeEvaluationInputSchema = z.object({
-  code: z.string().describe('The code snippet to evaluate.'),
+  code: z.string().describe('평가할 코드 스니펫입니다.'),
 });
 export type CodeEvaluationInput = z.infer<typeof CodeEvaluationInputSchema>;
 
 const CodeEvaluationOutputSchema = z.object({
-  security: z.string().describe('Feedback on the security aspects of the code.'),
-  readability: z.string().describe('Feedback on the readability of the code.'),
-  efficiency: z.string().describe('Feedback on the efficiency of the code.'),
-  overallScore: z.number().describe('The overall score of the code, as a percentage from 0 to 100.'),
+  security: z.string().describe('코드의 보안 측면에 대한 피드백입니다.'),
+  readability: z.string().describe('코드의 가독성에 대한 피드백입니다.'),
+  efficiency: z.string().describe('코드의 효율성에 대한 피드백입니다.'),
+  overallScore: z.number().describe('코드의 종합 점수, 0에서 100까지의 백분율입니다.'),
 });
 export type CodeEvaluationOutput = z.infer<typeof CodeEvaluationOutputSchema>;
 
@@ -32,12 +32,12 @@ const codeEvaluationPrompt = ai.definePrompt({
   name: 'codeEvaluationPrompt',
   input: {schema: CodeEvaluationInputSchema},
   output: {schema: CodeEvaluationOutputSchema},
-  prompt: `You are an AI code evaluation tool. You will be given a code snippet, and you will evaluate it based on its security, readability, and efficiency. Provide feedback for each of these categories.
+  prompt: `당신은 AI 코드 평가 도구입니다. 코드 스니펫이 주어지면 보안, 가독성, 효율성을 기준으로 평가합니다. 각 카테고리에 대한 피드백을 제공하세요.
 
-Code:
+코드:
 {{{code}}}
 
-Output a JSON object with keys for security, readability, efficiency, and overallScore.  The first three keys should be strings, and overallScore should be a number between 0 and 100.
+보안, 가독성, 효율성, overallScore를 키로 갖는 JSON 객체를 출력하세요. 처음 세 키는 문자열이어야 하고, overallScore는 0에서 100 사이의 숫자여야 합니다.
 `,
 });
 

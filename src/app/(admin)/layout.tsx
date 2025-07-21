@@ -3,11 +3,9 @@
 import * as React from 'react';
 import Link from 'next/link';
 import {
-  CircleUser,
   LayoutDashboard,
   LogOut,
   Rocket,
-  Settings,
   ShieldCheck,
   Users,
   Wand2,
@@ -47,7 +45,7 @@ function UserMenu() {
           className="relative h-9 w-9 rounded-full"
         >
           <Avatar className="h-9 w-9">
-            <AvatarImage src="https://placehold.co/100x100" alt="Admin User" />
+            <AvatarImage src="https://placehold.co/100x100" alt="관리자" />
             <AvatarFallback>AD</AvatarFallback>
           </Avatar>
         </Button>
@@ -55,7 +53,7 @@ function UserMenu() {
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">Admin User</p>
+            <p className="text-sm font-medium leading-none">관리자</p>
             <p className="text-xs leading-none text-muted-foreground">
               admin@devopsdojo.com
             </p>
@@ -65,14 +63,14 @@ function UserMenu() {
         <DropdownMenuItem asChild>
           <Link href="/dashboard">
             <LayoutDashboard className="mr-2 h-4 w-4" />
-            <span>App Dashboard</span>
+            <span>앱 대시보드</span>
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
           <Link href="/login">
             <LogOut className="mr-2 h-4 w-4" />
-            <span>Log out</span>
+            <span>로그아웃</span>
           </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -91,42 +89,42 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <div className="flex items-center gap-2">
             <Logo className="size-7 text-primary" />
             <div className='flex flex-col'>
-                <h1 className="text-lg font-semibold">DevOps Dojo</h1>
-                <span className="text-xs text-accent">Admin Panel</span>
+                <h1 className="text-lg font-semibold">데브옵스 도조</h1>
+                <span className="text-xs text-accent">관리자 패널</span>
             </div>
           </div>
         </SidebarHeader>
         <SidebarContent>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild isActive={isActive('/admin')} tooltip="Admin Dashboard">
+              <SidebarMenuButton asChild isActive={isActive('/admin')} tooltip="관리자 대시보드">
                 <Link href="/admin">
                   <ShieldCheck />
-                  <span>Dashboard</span>
+                  <span>대시보드</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild isActive={isActive('/admin/missions')} tooltip="Manage Missions">
+              <SidebarMenuButton asChild isActive={isActive('/admin/missions')} tooltip="미션 관리">
                 <Link href="/admin">
                   <Rocket />
-                  <span>Manage Missions</span>
+                  <span>미션 관리</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild isActive={isActive('/admin/users')} tooltip="User Analytics">
+              <SidebarMenuButton asChild isActive={isActive('/admin/users')} tooltip="사용자 분석">
                 <Link href="/admin">
                   <Users />
-                  <span>User Analytics</span>
+                  <span>사용자 분석</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
              <SidebarMenuItem>
-              <SidebarMenuButton asChild isActive={isActive('/admin/settings')} tooltip="AI Settings">
+              <SidebarMenuButton asChild isActive={isActive('/admin/settings')} tooltip="AI 설정">
                 <Link href="/admin">
                   <Wand2 />
-                  <span>AI Settings</span>
+                  <span>AI 설정</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -135,11 +133,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <SidebarFooter>
           <div className="flex items-center gap-3 p-2">
              <Avatar className="h-9 w-9">
-                <AvatarImage src="https://placehold.co/100x100" alt="Admin User" />
+                <AvatarImage src="https://placehold.co/100x100" alt="관리자" />
                 <AvatarFallback>AD</AvatarFallback>
             </Avatar>
             <div className="flex flex-col">
-                <span className="text-sm font-medium">Admin User</span>
+                <span className="text-sm font-medium">관리자</span>
                 <span className="text-xs text-muted-foreground">admin@devopsdojo.com</span>
             </div>
           </div>
@@ -149,7 +147,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <header className="sticky top-0 z-10 flex h-14 items-center gap-4 border-b bg-background px-4 sm:px-6">
           <SidebarTrigger className="md:hidden" />
           <div className="flex-1">
-            <h1 className="text-lg font-semibold">Admin Panel</h1>
+            <h1 className="text-lg font-semibold">관리자 패널</h1>
           </div>
           <UserMenu />
         </header>

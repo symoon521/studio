@@ -12,14 +12,14 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const AdjustAiPromptInputSchema = z.object({
-  promptType: z.enum(['codeEvaluation', 'labAnalysis']).describe('The type of prompt to adjust.'),
-  newPrompt: z.string().describe('The new prompt text to use.'),
+  promptType: z.enum(['codeEvaluation', 'labAnalysis']).describe('조정할 프롬프트 유형입니다.'),
+  newPrompt: z.string().describe('사용할 새 프롬프트 텍스트입니다.'),
 });
 export type AdjustAiPromptInput = z.infer<typeof AdjustAiPromptInputSchema>;
 
 const AdjustAiPromptOutputSchema = z.object({
-  success: z.boolean().describe('Whether the prompt was successfully updated.'),
-  message: z.string().describe('A message indicating the result of the update.'),
+  success: z.boolean().describe('프롬프트가 성공적으로 업데이트되었는지 여부입니다.'),
+  message: z.string().describe('업데이트 결과를 나타내는 메시지입니다.'),
 });
 export type AdjustAiPromptOutput = z.infer<typeof AdjustAiPromptOutputSchema>;
 
@@ -31,17 +31,17 @@ const adjustAiPromptFlow = ai.defineFlow(
   {
     name: 'adjustAiPromptFlow',
     inputSchema: AdjustAiPromptInputSchema,
-    outputSchema: AdjustAiPromptOutputSchema,
+    outputSchema: AdjustAiAIPromptOutputSchema,
   },
   async input => {
-    // In a real application, this would update a database or configuration file.
-    // For this example, we'll just log the new prompt and return a success message.
-    console.log(`Admin updating ${input.promptType} prompt to: ${input.newPrompt}`);
+    // 실제 애플리케이션에서는 데이터베이스나 구성 파일을 업데이트합니다.
+    // 이 예제에서는 새 프롬프트를 기록하고 성공 메시지를 반환합니다.
+    console.log(`관리자가 ${input.promptType} 프롬프트를 다음으로 업데이트합니다: ${input.newPrompt}`);
 
-    // Simulate a successful update.
+    // 성공적인 업데이트를 시뮬레이션합니다.
     return {
       success: true,
-      message: `Successfully updated ${input.promptType} prompt.`, // Removed extraneous characters
+      message: `${input.promptType} 프롬프트를 성공적으로 업데이트했습니다.`,
     };
   }
 );

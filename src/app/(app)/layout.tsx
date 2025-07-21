@@ -45,7 +45,7 @@ function UserMenu() {
           className="relative h-9 w-9 rounded-full"
         >
           <Avatar className="h-9 w-9">
-            <AvatarImage src="https://placehold.co/100x100" alt="@shadcn" />
+            <AvatarImage src="https://placehold.co/100x100" alt="John Doe" />
             <AvatarFallback>JD</AvatarFallback>
           </Avatar>
         </Button>
@@ -53,7 +53,7 @@ function UserMenu() {
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">John Doe</p>
+            <p className="text-sm font-medium leading-none">홍길동</p>
             <p className="text-xs leading-none text-muted-foreground">
               john.doe@example.com
             </p>
@@ -62,17 +62,17 @@ function UserMenu() {
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <CircleUser className="mr-2 h-4 w-4" />
-          <span>Profile</span>
+          <span>프로필</span>
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Settings className="mr-2 h-4 w-4" />
-          <span>Settings</span>
+          <span>설정</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
           <Link href="/login">
             <LogOut className="mr-2 h-4 w-4" />
-            <span>Log out</span>
+            <span>로그아웃</span>
           </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -90,32 +90,32 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <SidebarHeader>
           <div className="flex items-center gap-2">
             <Logo className="size-7 text-primary" />
-            <h1 className="text-lg font-semibold">DevOps Dojo</h1>
+            <h1 className="text-lg font-semibold">데브옵스 도조</h1>
           </div>
         </SidebarHeader>
         <SidebarContent>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild isActive={isActive('/dashboard')} tooltip="Dashboard">
+              <SidebarMenuButton asChild isActive={isActive('/dashboard')} tooltip="대시보드">
                 <Link href="/dashboard">
                   <LayoutDashboard />
-                  <span>Dashboard</span>
+                  <span>대시보드</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild isActive={isActive('/missions')} tooltip="Missions">
+              <SidebarMenuButton asChild isActive={isActive('/missions')} tooltip="미션">
                 <Link href="/missions">
                   <Rocket />
-                  <span>Missions</span>
+                  <span>미션</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild isActive={isActive('/admin')} tooltip="Admin Panel">
+              <SidebarMenuButton asChild isActive={isActive('/admin')} tooltip="관리자 패널">
                 <Link href="/admin">
                   <ShieldCheck />
-                  <span>Admin Panel</span>
+                  <span>관리자 패널</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -128,7 +128,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 <AvatarFallback>JD</AvatarFallback>
             </Avatar>
             <div className="flex flex-col">
-                <span className="text-sm font-medium">John Doe</span>
+                <span className="text-sm font-medium">홍길동</span>
                 <span className="text-xs text-muted-foreground">john.doe@example.com</span>
             </div>
           </div>

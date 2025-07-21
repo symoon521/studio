@@ -12,15 +12,15 @@ import { Line, LineChart, ResponsiveContainer, Tooltip, YAxis } from 'recharts';
 function SimulatedTerminal() {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState([
-    { text: 'Welcome to the DevOps Dojo Lab Environment!', type: 'info' as const },
-    { text: 'Your EKS cluster is ready. Pod status: Running.', type: 'info' as const },
-    { text: 'Type `help` for a list of available commands.', type: 'info' as const },
+    { text: '데브옵스 도조 랩 환경에 오신 것을 환영합니다!', type: 'info' as const },
+    { text: 'EKS 클러스터가 준비되었습니다. 파드 상태: 실행 중.', type: 'info' as const },
+    { text: '사용 가능한 명령어 목록을 보려면 `help`를 입력하세요.', type: 'info' as const },
   ]);
   const endOfHistoryRef = useRef<null | HTMLDivElement>(null);
 
   const commands: { [key: string]: string } = {
-    help: 'Available commands: help, ls, kubectl get pods, clear',
-    ls: '-rw-r--r-- 1 user user 1.2K Jul 29 10:00 deployment.yaml\n-rw-r--r-- 1 user user  564 Jul 29 10:00 service.yaml',
+    help: '사용 가능한 명령어: help, ls, kubectl get pods, clear',
+    ls: '-rw-r--r-- 1 user user 1.2K 7월 29일 10:00 deployment.yaml\n-rw-r--r-- 1 user user  564 7월 29일 10:00 service.yaml',
     'kubectl get pods': 'NAME                     READY   STATUS    RESTARTS   AGE\nmy-app-6d8d47b48f-abcde   1/1     Running   0          5m',
     clear: '',
   };
@@ -44,7 +44,7 @@ function SimulatedTerminal() {
         newHistory.push({ text: commandOutput, type: 'output' as const });
         setHistory(newHistory);
       } else {
-        newHistory.push({ text: `command not found: ${input}`, type: 'error' as const });
+        newHistory.push({ text: `명령어를 찾을 수 없음: ${input}`, type: 'error' as const });
         setHistory(newHistory);
       }
       setInput('');
@@ -54,7 +54,7 @@ function SimulatedTerminal() {
   return (
     <Card className="h-full flex flex-col bg-black text-white font-mono text-sm">
       <CardHeader>
-        <CardTitle className="text-primary">Kubernetes Pod Terminal</CardTitle>
+        <CardTitle className="text-primary">쿠버네티스 파드 터미널</CardTitle>
       </CardHeader>
       <CardContent className="flex-grow overflow-y-auto" onClick={() => document.getElementById('terminal-input')?.focus()}>
         <div className="h-full">
@@ -117,14 +117,14 @@ function LiveMetrics() {
     return (
         <Card className="h-full flex flex-col">
             <CardHeader>
-                <CardTitle>Live Metrics (Grafana)</CardTitle>
+                <CardTitle>실시간 메트릭 (그라파나)</CardTitle>
             </CardHeader>
             <CardContent className="flex-grow space-y-4">
                 <div className="flex items-center justify-between p-3 bg-muted rounded-lg">
                     <div className="flex items-center gap-2">
                         <Cpu className="h-6 w-6 text-primary" />
                         <div>
-                            <p className="font-bold">CPU Usage</p>
+                            <p className="font-bold">CPU 사용량</p>
                             <p className="text-2xl font-mono">{cpuData[cpuData.length - 1].value.toFixed(1)}%</p>
                         </div>
                     </div>
@@ -136,7 +136,7 @@ function LiveMetrics() {
                     <div className="flex items-center gap-2">
                         <MemoryStick className="h-6 w-6 text-accent" />
                         <div>
-                            <p className="font-bold">Memory Usage</p>
+                            <p className="font-bold">메모리 사용량</p>
                             <p className="text-2xl font-mono">{memData[memData.length - 1].value.toFixed(1)}%</p>
                         </div>
                     </div>
@@ -148,14 +148,14 @@ function LiveMetrics() {
                     <div className="flex items-center gap-2">
                         <HardDrive className="h-6 w-6 text-yellow-500" />
                         <div>
-                            <p className="font-bold">Disk Usage</p>
+                            <p className="font-bold">디스크 사용량</p>
                             <p className="text-2xl font-mono">22%</p>
                         </div>
                     </div>
                 </div>
                 <div className="p-3 bg-muted/50 border border-dashed rounded-lg flex items-center gap-2 text-muted-foreground">
                     <AlertCircle className="h-5 w-5"/>
-                    <p>AWS EKS Status: <span className="text-foreground font-medium">Cluster Healthy</span></p>
+                    <p>AWS EKS 상태: <span className="text-foreground font-medium">클러스터 정상</span></p>
                 </div>
             </CardContent>
         </Card>
@@ -174,15 +174,15 @@ export default function LabPage({ params }: { params: { id: string } }) {
         <div className="flex items-center justify-between bg-card p-3 rounded-lg border">
             <div>
                 <h1 className="text-xl font-bold">{mission.title}</h1>
-                <p className="text-sm text-muted-foreground">Lab Environment: Active</p>
+                <p className="text-sm text-muted-foreground">랩 환경: 활성</p>
             </div>
             <div className="flex gap-2">
                 <Button variant="destructive">
-                    <Power className="mr-2 h-4 w-4" /> Stop Lab
+                    <Power className="mr-2 h-4 w-4" /> 랩 중지
                 </Button>
                 <Button asChild>
                     <Link href={`/missions/${mission.id}/feedback`}>
-                        <Send className="mr-2 h-4 w-4" /> Submit Mission
+                        <Send className="mr-2 h-4 w-4" /> 미션 제출
                     </Link>
                 </Button>
             </div>
