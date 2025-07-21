@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
@@ -8,12 +10,12 @@ import Link from "next/link"
 import { ArrowRight, CheckCircle2, GitCommit, Rocket, Server, VenetianMask } from "lucide-react"
 
 const teamData = [
-    { name: 'Jan', total: Math.floor(Math.random() * 20) + 10 },
-    { name: 'Feb', total: Math.floor(Math.random() * 20) + 10 },
-    { name: 'Mar', total: Math.floor(Math.random() * 20) + 10 },
-    { name: 'Apr', total: Math.floor(Math.random() * 20) + 10 },
-    { name: 'May', total: Math.floor(Math.random() * 20) + 10 },
-    { name: 'Jun', total: Math.floor(Math.random() * 20) + 10 },
+    { name: 'Jan', total: 12 },
+    { name: 'Feb', total: 19 },
+    { name: 'Mar', total: 3 },
+    { name: 'Apr', total: 5 },
+    { name: 'May', total: 2 },
+    { name: 'Jun', total: 3 },
 ]
 
 const recentActivity = [
